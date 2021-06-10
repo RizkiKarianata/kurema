@@ -1,0 +1,110 @@
+<template>
+	<div class="page no-navbar page-with-toolbar">
+		<div class="toolbar tabbar tabbar-labels toolbar-bottom-md custom-toolbar">
+			<div class="toolbar-inner">
+				<a href="/" class="tab-link">
+					<i class="material-icons">home</i>
+					<span class="tabbar-label">Beranda</span>
+				</a>
+				<a href="/resep/" class="tab-link">
+					<i class="material-icons">local_dining</i>
+					<span class="tabbar-label">Resep</span>
+				</a>
+				<a href="/pencarian/" class="tab-link tab-link-active">
+					<i class="material-icons">search</i>
+					<span class="tabbar-label">Pencarian</span>
+				</a>
+				<a href="/kategori/" class="tab-link">
+					<i class="material-icons">local_pizza</i>
+					<span class="tabbar-label">Kategori</span>
+				</a>
+				<a href="/akun/" class="tab-link">
+					<i class="material-icons">pages</i>
+					<span class="tabbar-label">Akun</span>
+				</a>
+			</div>
+		</div>
+		<div class="page-content">
+			<div class="searchbar-backdrop"></div>
+			<div class="navbrar-site display-flex justify-content-flex-end align-items-center  padding-left padding-right mt margin-bottom"></div>
+			<div class="page-title padding-left padding-right">
+				<h2>Cari Resep Makanan</h2>
+			</div>
+			<div class="section search-section mt">
+				<div class="section-content">
+					<form class="searchbar">
+						<div class="searchbar-inner">
+							<div class="searchbar-input-wrap">
+								<input placeholder="Cari Resep Makanan" class="" type="search">
+								<i class="searchbar-icon"></i>
+								<span class="input-clear-button"></span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="section list-trending mt searchbar-not-found">
+				<div class="section-content resep-list" style="margin-top: 75px;">
+					{{#each data}}
+					<div class="trend mt">
+						<div class="trend-user display-flex justify-content-space-between align-items-center">
+							<div class="user display-flex align-items-center">
+								<img src="static/img/author.png" alt="user2">
+								<div class="user-infos">
+									<div class="user-name">Level : {{this.difficulty}}</div>
+									<div class="user-info">{{this.serving}} {{this.times}}</div>
+								</div>
+							</div>
+						</div>
+						<div class="trend-img">
+							<img src="{{this.thumb}}" alt="tr2">
+						</div>
+						<div class="trend-content padding">
+							<h4>
+								<a href="/detail-resep/{{this.key}}/" class="resep-title">{{this.title}}</a>
+							</h4>
+							<a href="/detail-resep/{{this.key}}/" class="read-more">Baca Selengkapnya</a>
+						</div>
+					</div>
+					{{/each}}
+				</div>
+			</div>
+			<div class="mt pd"></div>
+		</div>
+	</div>
+</template>
+<script>
+	export default{
+		mounted() {
+			var $this = this;
+			var app = this.$app;
+			var $$ = this.$$;
+			var self = this;
+		},
+		on: {
+			pageInit: function () {
+				var self = this;
+				var $this = this;
+				var app = this.$app;
+				var $$ = this.$$;
+				var items = [];
+				var dataJSON = new Array();
+				var searchbar = app.searchbar.create({
+					el: '.searchbar',
+					searchContainer: '.list-trending .resep-list',
+					searchIn: '.trend .trend-content .resep-title',
+					on: {
+						search(sb, query, previousQuery) {
+							app.request.get('https://masak-apa-tomorisakura.vercel.app/api/search/?q='+query, (response) => {
+								dataJSON = JSON.parse(response);
+								self.$setState({
+									data: dataJSON.results
+								});
+							});
+						}
+					}
+				});
+			},
+		},
+	}
+</script>

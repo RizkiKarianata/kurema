@@ -1,0 +1,154 @@
+<template>
+	<div class="page no-navbar page-with-toolbar">
+		<div class="toolbar tabbar tabbar-labels toolbar-bottom-md custom-toolbar">
+			<div class="toolbar-inner">
+				<a href="/" class="tab-link tab-link-active">
+					<i class="material-icons">home</i>
+					<span class="tabbar-label">Beranda</span>
+				</a>
+				<a href="/resep/" class="tab-link">
+					<i class="material-icons">local_dining</i>
+					<span class="tabbar-label">Resep</span>
+				</a>
+				<a href="/pencarian/" class="tab-link">
+					<i class="material-icons">search</i>
+					<span class="tabbar-label">Pencarian</span>
+				</a>
+				<a href="/kategori/" class="tab-link">
+					<i class="material-icons">local_pizza</i>
+					<span class="tabbar-label">Kategori</span>
+				</a>
+				<a href="/akun/" class="tab-link">
+					<i class="material-icons">pages</i>
+					<span class="tabbar-label">Akun</span>
+				</a>
+			</div>
+		</div>
+		<div class="page-content">
+			<div class="navbrar-site display-flex justify-content-flex-end align-items-center  padding-left padding-right mt margin-bottom"></div>
+			<div class="page-title padding-left padding-right">
+				<h2>Kurema</h2>
+			</div>
+			<div class="section intro-section">
+				<div class="section-content">
+					Selamat datang di Aplikasi Kurema. Temukan berbagai resep masakan menarik yang patut untuk dicoba di rumah!
+				</div>
+			</div>
+			<div class="section list-restaurants mt">
+				<div class="section-title display-flex justify-content-space-between align-items-center">
+					<h3>Berita Terbaru</h3>
+					<a href="/berita/" class="see-all">Semuanya</a>
+				</div>
+				<div class="section-content">
+					<div class="swiper-container dswiper_1 swiper-container-horizontal">
+						<div class="swiper-wrapper">
+							{{#each data}}
+							<div class="swiper-slide">
+								<div class="custom-card restaurant-card">
+									<div class="restaurant-card-img">
+										<img src="{{this.thumb}}" alt="r1">
+									</div>
+									<div class="restaurant-card-content">
+										<h4>
+											<a href="/detail-berita/inspirasi-dapur/{{this.key}}/">{{this.title}}</a>
+										</h4>
+										<div class="user display-flex align-items-center">
+											<img src="static/img/author.png" alt="user">
+											<div class="user-infos">
+												<div class="user-name">{{this.tags}}</div>
+												<div class="user-info">{{this.key}}</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							{{/each}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section list-chefs mt">
+				<div class="section-title display-flex justify-content-space-between align-items-center">
+					<h3>Juru Masak</h3>
+				</div>
+				<div class="section-content">
+					<div data-pagination="{&quot;el&quot;: &quot;.swiper-pagination&quot;}" data-space-between="10" data-slides-per-view="2.15" class="swiper-container swiper-init swiper-container-horizontal">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">	
+								<div class="chef">
+									<img src="static/img/juru-masak-1.jpg" alt="chef1">
+									<div class="chef-name">Rizki Karianata</div>
+									<div class="chef-desc">Web Developer</div>
+								</div>
+							</div>
+							<div class="swiper-slide">	
+								<div class="chef">
+									<img src="static/img/juru-masak-2.jpg" alt="chef2">
+									<div class="chef-name">Intan Puja Ningrum</div>
+									<div class="chef-desc">Owner Kedai Mie Setan</div>
+								</div>
+							</div>
+							<div class="swiper-slide">	
+								<div class="chef">
+									<img src="static/img/juru-masak-3.jpg" alt="chef3">
+									<div class="chef-name">Nina Aryi</div>
+									<div class="chef-desc">CEO Ngopiyuk</div>
+								</div>
+							</div>
+							<div class="swiper-slide">	
+								<div class="chef">
+									<img src="static/img/juru-masak-4.jpg" alt="chef4">
+									<div class="chef-name">Farrah Arisqa</div>
+									<div class="chef-desc">Customer Service</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mt pd"></div>
+		</div>
+	</div>
+</template>
+<script>
+	export default{
+		mounted() {
+			var $this = this;
+			var app = this.$app;
+			var $$ = this.$$;
+			var self = this;
+		},
+		on: {
+			pageInit: function () {
+				var self = this;
+				var $this = this;
+				var app = this.$app;
+				var $$ = this.$$;
+				var dataJSON = new Array();
+				app.request({
+					url: 'https://masak-apa-tomorisakura.vercel.app/api/categorys/article/inspirasi-dapur',
+					dataType: 'json',
+					contentType: "application/json",
+					method: 'GET',
+					statusCode: {
+						200: function (xhr) {
+							console.log("success get data");
+						},
+					},
+					success: function (response, status, xhr) {
+						dataJSON = response;
+						var item = dataJSON.results;
+						console.log(response);
+						self.$setState({
+							data: item
+						});
+					},
+					error: function (xhr, status, error) {
+						console.log(xhr);
+						console.log(status);
+					}
+				});
+			},
+		},
+	}
+</script>

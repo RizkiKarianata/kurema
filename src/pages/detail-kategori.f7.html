@@ -1,0 +1,96 @@
+<template>
+	<div class="page no-navbar">
+		<div class="page-content">
+			<div class="navbrar-site display-flex justify-content-space-between align-items-center padding-left padding-right mt margin-bottom">
+				<a href="#" class="link back">
+					<i class="icon icon-back color-black size-8"></i>
+				</a>
+			</div>
+			<div class="page-title padding-left padding-right">
+				{{#if data}}
+				<h2>{{name}}</h2>
+				{{else}}
+				{{/if}}
+			</div>
+			<div class="section list-trending mt">
+				<div class="section-content">
+					{{#each data}}
+					<div class="trend mt">
+						<div class="trend-user display-flex justify-content-space-between align-items-center">
+							<div class="user display-flex align-items-center">
+								<img src="static/img/author.png" alt="user2">
+								<div class="user-infos">
+									<div class="user-name">Level : {{this.dificulty}}</div>
+									<div class="user-info">{{this.portion}} {{this.times}}</div>
+								</div>
+							</div>
+						</div>
+						<div class="trend-img">
+							<img src="{{this.thumb}}" alt="tr2">
+						</div>
+						<div class="trend-content padding">
+							<h4>
+								<a href="/detail-resep/{{this.key}}/">{{this.title}}</a>
+							</h4>
+							<a href="/detail-resep/{{this.key}}/" class="read-more">Baca Selengkapnya</a>
+						</div>
+					</div>
+					{{/each}}
+				</div>
+			</div>
+			<div class="mt pd"></div>
+		</div>
+	</div>
+</template>
+<script>
+	export default{
+		mounted() {
+			var $this = this;
+			var app = this.$app;
+			var $$ = this.$$;
+			var self = this;
+		},
+		on: {
+			pageInit: function () {
+				var self = this;
+				var $this = this;
+				var app = this.$app;
+				var $$ = this.$$;
+				var id = this.$route.params.id;
+				var items = [];
+				var dataJSON = new Array();
+				app.request.get('https://masak-apa-tomorisakura.vercel.app/api/categorys/recipes/'+id, (response) => {
+					dataJSON = JSON.parse(response);
+					console.log(dataJSON);
+					if(id == "resep-dessert") {
+						var nameString = "Dessert";
+					}else if(id == "sarapan") {
+						var nameString = "Sarapan";
+					}else if(id == "makan-siang") {
+						var nameString = "Makan Siang";
+					}else if(id == "makan-malam") {
+						var nameString = "Makan Malam";
+					}else if(id == "masakan-hari-raya") {
+						var nameString = "Masakan Hari Raya";
+					}else if(id == "masakan-tradisional") {
+						var nameString = "Masakan Tradisional";
+					}else if(id == "resep-ayam") {
+						var nameString = "Resep Ayam";
+					}else if(id == "resep-daging") {
+						var nameString = "Resep Daging";
+					}else if(id == "resep-sayuran") {
+						var nameString = "Resep Sayuran";
+					}else if(id == "resep-seafood") {
+						var nameString = "Resep Seafood";
+					}else {
+						var nameString = "Tidak Diketahui";
+					}
+					self.$setState({
+						data: dataJSON.results,
+						name: nameString
+					});
+				});
+			},
+		},
+	}
+</script>

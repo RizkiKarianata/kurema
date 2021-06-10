@@ -1,0 +1,64 @@
+<template>
+	<div class="page no-navbar">
+		<div class="page-content">
+			<div class="navbrar-site navbrar-site-transparent padding-left padding-right mt margin-bottom ">
+				<a href="#" class="link back">
+					<i class="icon icon-back"></i>
+				</a>
+			</div>
+			{{#if data}}
+			<div class="single-page-header-img">
+				<img src="{{data.thumb}}" alt="1">
+				<div class="single-page-header-infos">
+					<h2>{{data.title}}</h2>
+				</div>
+			</div>
+			<div class="section list-restaurants margin-top">
+				<div class="section-content">
+					<p>{{data.description}}</p>				
+					<div class="trend-user display-flex justify-content-space-between align-items-center">
+						<div class="user display-flex align-items-center">
+							<img src="static/img/avatar.png" alt="user">
+							<div class="user-infos">
+								<div class="user-name">{{data.author}}</div>
+								<div class="user-info">{{data.date_published}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{else}}
+			{{/if}}
+			<div class="mt pd"></div>
+		</div>
+	</div>
+</template>
+<script>
+	export default{
+		mounted() {
+			var $this = this;
+			var app = this.$app;
+			var $$ = this.$$;
+			var self = this;
+		},
+		on: {
+			pageInit: function () {
+				var self = this;
+				var $this = this;
+				var app = this.$app;
+				var $$ = this.$$;
+				var tags = this.$route.params.tags;
+				var key = this.$route.params.key;
+				var items = [];
+				var dataJSON = new Array();
+				app.request.get('https://masak-apa-tomorisakura.vercel.app/api/article/'+tags+'/'+key, (response) => {
+					dataJSON = JSON.parse(response);
+					console.log(dataJSON);
+					self.$setState({
+						data: dataJSON.results
+					});
+				});
+			},
+		},
+	}
+</script>

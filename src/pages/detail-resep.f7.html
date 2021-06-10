@@ -1,0 +1,123 @@
+<template>
+	<div class="page no-navbar">
+		<div class="page-content">
+
+			<div class="navbrar-site navbrar-site-transparent padding-left padding-right mt margin-bottom ">
+				<a href="#" class="link back">
+					<i class="icon icon-back"></i>
+				</a>
+			</div>
+			{{#if data}}
+			<div class="single-page-header-img">
+				{{#if data.thumb}}
+				<img src="{{data.thumb}}" alt="1">
+				{{else}}
+				<img src="static/img/author.png" alt="1">
+				{{/if}}
+				<div class="single-page-header-infos">
+					<h2>{{data.title}}</h2>
+				</div>
+			</div>
+			<div class="section margin-top">
+				<div class="section-content">
+					<p>{{data.desc}}</p>
+					<div class="trend-user display-flex justify-content-space-between align-items-center">
+						<div class="user display-flex align-items-center">
+							<img src="static/img/author.png" alt="user">
+							<div class="user-infos">
+								<div class="user-name">{{data.author.user}}</div>
+								<div class="user-info">{{data.author.datePublished}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section mt">
+				<div class="section-title display-flex justify-content-space-between align-items-center">
+					<h3>Bahan - Bahan</h3>
+				</div>
+				<div class="section-content">
+					<ul class="list-ingredients no-margin no-padding">
+						{{#each data.ingredient}}
+						<li>
+							<label class="checkbox">
+								<input type="checkbox" checked="checked" disabled=""><i class="icon-checkbox"></i>
+							</label>{{this}}
+						</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+			<div class="section mt">
+				<div class="section-title display-flex justify-content-space-between align-items-center">
+					<h3>Cara Pembuatan</h3>
+				</div>
+				<div class="section-content">
+					<div class="directions display-flex justify-content-center">
+						<div class="direction">
+							<div class="direction-img bg5">
+								<img src="static/img/icons/clock.png" alt="d1">
+							</div>
+							<div class="direction-title">Waktu</div>
+							<div class="direction-time">{{data.times}}</div>
+						</div>
+						<div class="direction">
+							<div class="direction-img bg4">
+								<img src="static/img/icons/cooking.png" alt="d2">
+							</div>
+
+							<div class="direction-title">Level</div>
+							<div class="direction-time">{{data.dificulty}}</div>
+						</div>
+						<div class="direction">
+							<div class="direction-img bg3">
+								<img src="static/img/icons/soup.png" alt="d3">
+							</div>
+
+							<div class="direction-title">Jumlah</div>
+							<div class="direction-time">{{data.servings}}</div>
+						</div>
+					</div>
+					{{#each data.step}}
+					<p>{{this}}</p>
+					{{/each}}
+					<div align="center">
+						<img src="{{data.needItem[0].thumb_item}}" alt="" class="img-fluid" style="width: 50%;">
+						<p>{{data.needItem[0].item_name}}</p>
+					</div>
+				</div>
+			</div>
+			{{else}}
+			{{/if}}
+			<div class="mt pd"></div>
+		</div>
+	</div>
+</template>
+<script>
+	export default{
+		mounted() {
+			var $this = this;
+			var app = this.$app;
+			var $$ = this.$$;
+			var self = this;
+		},
+		on: {
+			pageInit: function () {
+				var self = this;
+				var $this = this;
+				var app = this.$app;
+				var $$ = this.$$;
+				var id = this.$route.params.id;
+				var items = [];
+				var dataJSON = new Array();
+				app.request.get('https://masak-apa-tomorisakura.vercel.app/api/recipe/'+id, (response) => {
+					dataJSON = JSON.parse(response);
+					console.log(dataJSON);
+					self.$setState({
+						data: dataJSON.results
+					});
+				});
+			},
+		},
+	}
+</script>

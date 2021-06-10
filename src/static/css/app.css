@@ -1,0 +1,973 @@
+/*==============================================
+[Main stylesheet app.css]
+
+Author:			WM_Team
+Version:		1.0
+Created:		28 September 2018
+Last updated:	03 October 2018
+Template:		Vanille - Restaurant Reservations & Food Delivery Mobile Template
+================================================*/
+/*
+[Table of Contents]
+
+01. GENERAL
+02. HOMEPAGE
+03. RESTAURANT DETAIL
+04. RECIPE DETAIL
+05. FOOD DETAIL
+06. CHECKOUT
+07. PROFILE
+08. LOGIN & REGISTER
+09. PAGES LIST
+10. THEME DARK
+*/
+
+
+/*===============================================*/
+/* 01. GENERAL	 						    	 */
+/*===============================================*/
+
+.md body {
+	font-family: 'Montserrat', sans-serif;
+	color: #7d7d7d;
+	font-size: 14px;
+}
+
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+.border {
+	position: relative;
+	height: 1px;
+}
+
+.border:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	width: 100%;
+	top: 100%;
+	bottom: auto;
+	height: 1px;
+	background: #efefef;
+}
+
+.md input[type="date"],
+.md  input[type="datetime-local"],
+.md input[type="email"],
+.md input[type="number"],
+.md input[type="password"],
+.md input[type="search"],
+.md input[type="tel"],
+.md  input[type="text"],
+.md input[type="time"],
+.md input[type="url"],
+.md  select,
+.md textarea {
+	font-size: 13px;
+	border-radius: 2px;
+	background-color: #efefef;
+	width: 100%;
+	height: 32px;
+	padding-left: 16px;
+	padding-right: 16px;
+	position: relative;
+	
+}
+
+.md .theme-dark .searchbar-page .searchbar {
+	background: transparent;
+}
+
+.md .theme-dark  select option {
+	background: #222222;
+}
+
+.md textarea {
+	height: 80px;
+}
+
+.form-item {
+	margin-bottom: 20px;
+}
+
+.form-item-title {
+	font-size: 14px;
+	font-weight: 700;
+	padding-bottom: 10px;
+	color: #111111;
+}
+
+.form-item-content {
+	position: relative;
+}
+
+.md .form-item-content .input-clear-button {
+	width: 30px;
+	height: 30px;
+	margin-top: -15px;
+	right: 3px;
+	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D'%23737373'%20height%3D'24'%20viewBox%3D'0%200%2024%2024'%20width%3D'24'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'M19%206.41L17.59%205%2012%2010.59%206.41%205%205%206.41%2010.59%2012%205%2017.59%206.41%2019%2012%2013.41%2017.59%2019%2019%2017.59%2013.41%2012z'%2F%3E%3Cpath%20d%3D'M0%200h24v24H0z'%20fill%3D'none'%2F%3E%3C%2Fsvg%3E");
+	border-radius: 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 24px 24px;
+	background-color: transparent;
+}
+
+.md .form-item-content .input-clear-button:after {
+	background-image: none;
+}
+
+.form-item-content .item-checkbox-group:first-child {
+	margin-top: 0px;
+}
+
+.item-checkbox-group {
+	margin-top: 10px;
+}
+
+.item-checkbox {
+	margin-right: 10px;
+	display: inline-block;
+}
+
+.form-item .item-checkbox:first-child {
+	margin-left: 0px;
+}
+
+.form-item .item-checkbox:last-child {
+	margin-right: 0px;
+}
+
+.item-checkbox span {
+	font-size: 13px;
+	font-weight: 600;
+	color: #757575;
+	position: relative;
+	top: 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  color: #111111;
+}
+
+h1{
+	font-size: 30px;
+}
+
+h2{
+	font-size: 24px;
+}
+
+h3{
+	font-size: 20px;
+}
+
+h4{
+	font-size: 18px;
+}
+
+.like,
+.book,
+.favorite {
+	padding: 10px;
+	display: inline-block;
+	border-radius: 5px;
+}
+
+.like {
+	background: #ffd9e8;
+}
+
+.book {
+	background: #d3ebff;
+}
+
+.favorite {
+	background: #f0eadc;
+}
+
+.mt {
+	margin-top: 30px!important;
+}
+
+.mb {
+	margin-bottom: 30px!important;
+}
+
+.pt {
+	padding-top: 30px!important;
+}
+
+.pb {
+	padding-bottom: 30px!important;
+}
+
+.bg1 {
+	background: #ffd9e8;
+}
+
+.bg2 {
+	background: #efe8f5;
+}
+
+.bg3 {
+	background: #eaedfc;
+}
+
+.bg4 {
+	background: #fcead4;
+}
+
+.bg5 {
+	background: #efe8f5;
+}
+
+.md .custom-toolbar {
+	background: #f7f7f8;
+}
+
+.md .custom-toolbar.toolbar:not(.messagebar) {
+    background: #f7f7f8;
+	color: #757575;
+}
+
+.md .custom-toolbar.tabbar a.tab-link.active-state,
+.md .custom-toolbar.tabbar a.tab-link.tab-link-active,
+.md .custom-toolbar.tabbar-labels a.tab-link.active-state,
+.md .custom-toolbar.tabbar-labels a.tab-link.tab-link-active {
+    color: #ff1973;
+}
+
+.md .custom-toolbar.tabbar a.tab-link,
+.md .custom-toolbar.tabbar-labels a.tab-link {
+    color: #757575;
+	font-size: 11px;
+}
+
+.page-with-toolbar {
+	padding-bottom: 50px;
+}
+
+.close-icon {
+	width: 15px;
+}
+
+.icon-size-20 {
+	width: 20px;
+}
+
+.icon-size-60 {
+	width: 60px;
+}
+
+/*===============================================*/
+/* 02. HOMEPAGE	 						    	 */
+/*===============================================*/
+
+/** Navbar **/
+
+.md .color-theme-pink .panel-menu-open {
+	color: #757575;
+}
+
+.md .color-theme-pink .panel-menu-open i {
+	line-height: 1.5;
+}
+
+.navbar-site-action {
+	padding: 10px;
+	background: #ffd9e8;
+	display: inline-block;
+	border-radius: 5px;
+}
+
+.navbrar-site-transparent {
+	background: transparent;
+	z-index: 1;
+	position: absolute;
+	font-size: 12px;
+}
+
+.md  .navbrar-site-transparent .icon-back {
+	width: 8px;
+	height: 8px;
+}
+
+.size-8  {
+	width: 8px!important;
+	height: 8px!important;
+}
+
+/* Homepage Content */
+
+.page-title h2 {
+	margin: 0px;
+}
+
+.section {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.section-title {
+	margin-bottom: 15px;
+}
+
+.section-title h3 {
+	margin: 0px;
+}
+
+.section-title .see-all {
+	font-size: 13px;
+	font-weight: 600;
+}
+
+/** Intro **/
+
+.intro-section .section-content {
+	padding-top: 10px;
+	color: #7d7d7d;
+}
+
+/** Searchbar **/
+
+.md .search-section .searchbar {
+    box-shadow: none;
+    margin: 0px;
+}
+
+.md .search-section .searchbar {
+    height: auto;
+}
+
+.md .search-section .searchbar-input-wrap {
+    height: 32px;
+}
+
+.md .search-section .searchbar input[type="search"], .md .search-section .searchbar input[type="text"] {
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 0 42px;
+    background-color: #e8e8ea;
+}
+
+.md .search-section .searchbar .input-clear-button {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    right: 3px;
+}
+
+/** Card restaurant **/
+
+.list-restaurants .swiper-slide .custom-card {
+	margin: 5px;
+}
+
+.custom-card {
+	background-color: rgb( 255, 255, 255 );
+	box-shadow: 2px 3.464px 13px 0px rgb( 255, 217, 232 );
+	border-radius: 5px;
+}
+
+.restaurant-card-img {
+	height: 250px;
+	border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.restaurant-card-img img {
+	object-fit: cover;
+	object-position: top;
+	width: 100%;
+	height: 100%;
+	border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.restaurant-card-content h4 {
+	margin: 0px;
+}
+
+.restaurant-card-content p {
+	font-size: 14px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	color: #7d7d7d;
+}
+
+.md .restaurant-card-content h4 a {
+	color: #111111;
+}
+
+.restaurant-card-content  {
+	padding: 16px;
+}
+
+.restaurant-card-footer {
+	margin-top: 20px;
+	padding-bottom: 32px;
+}
+
+.user img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+}
+
+.user-infos {
+	padding-left: 10px;
+}
+
+.user-name {
+	font-size: 13px;
+	color: #111111;
+	font-weight: 700;
+}
+
+.user-info {
+	font-size: 12px;
+	color: #7d7d7d;
+}
+
+.restaurant-card-footer a {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/** Chefs **/
+
+.chef img {
+	width: 100%;
+	border-radius: 5px;
+}
+
+.chef-name {
+	font-weight: 700;
+	font-size: 14px;
+	color: #111111;
+	text-align: center;
+	margin-top: 8px;
+}
+
+.chef-desc {
+	text-align: center;
+	font-size: 13px;
+	color: #7d7d7d;
+}
+
+.list-chefs .row {
+	margin-top: 20px;
+}
+
+.list-chefs .row:first-child {
+	margin-top: 0px;
+}
+
+/** Categories **/
+
+.list-categories .category {
+	padding: 22px;
+	border-radius: 5px;
+}
+
+.list-categories .category img {
+	width: 90px;
+	display: block;
+	margin: 0px auto;
+}
+
+.list-categories .section-content .row:not(:first-child) .category {
+	margin-top: 10px;
+}
+
+.list-categories .section-content .row .col:first-child .category {
+	margin-right: 5px;
+}
+
+.list-categories .section-content .row .col:last-child .category {
+	margin-left: 5px;
+}
+
+/** Recipes **/
+
+.rate-badge img {
+	width: 20px;
+	height: 20px;
+}
+
+.rate-badge {
+	line-height: 14px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #ff1973;
+	flex-direction: column;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.rate-badge:hover{
+	cursor: pointer;
+}
+
+.trends {
+	margin-top: 16px;
+}
+
+.trend-img {
+	height: 300px;
+	border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.trend-img img {
+	object-fit: cover;
+	object-position: top;
+	width: 100%;
+	height: 100%;
+	border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.trend-content {
+	background: #fcead4;
+	border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.md .trend-content h4 a {
+	color: #111111;
+}
+
+.read-more {
+	font-weight: 700;
+}
+
+.trend-user {
+	margin-bottom: 16px;
+}
+
+/** Food List **/
+
+.food-list:not(:first-child) {
+	margin-top: 20px;
+}
+
+.food-list-content {
+	width: 200px;
+}
+
+.food-img {
+	height: 80px;
+	width: 80px;
+	border-radius: 5px;
+}
+
+.food-img img {
+	object-fit: cover;
+	object-position: top;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+}
+
+.food-name {
+	font-weight: 700;
+	font-size: 14px;
+	color: #111111;
+}
+
+.md .food-name a {
+	color: #111111;
+}
+
+.food-price {
+	font-size: 13px;
+	font-weight: 600;
+	color: #7d7d7d;
+}
+
+.food-desc {
+	margin: 5px 0px;
+	font-size: 12px;
+}
+
+.order-now {
+	font-weight: 700;
+	padding: 3px 15px;
+	display: inline-block;
+	border-radius: 12px;
+	font-size: 11px;
+	text-transform: uppercase;
+	margin-top: 8px;
+}
+
+.custom-btn {
+	font-weight: 700;
+	padding: 10px 0px;
+	border-radius: 5px;
+	font-size: 11px;
+	text-transform: uppercase;
+	margin-top: 8px;
+	text-align: center;
+	display: block;
+}
+
+.food-list-content {
+	padding-top: 5px;
+	padding-left: 10px;
+}
+
+.food-list .stepper {
+	margin-top: 5px;
+	width: 125px;
+}
+
+
+
+/*===============================================*/
+/* 03. RESTAURANT DETAIL				    	 */
+/*===============================================*/
+
+.single-page-header-img {
+	height: 350px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.single-page-header-img img {
+	object-fit: cover;
+	object-position: top;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.single-page-header-infos {
+	z-index: 22;
+	padding: 20% 20px 20px 20px;
+	background-image: linear-gradient(to bottom,rgba(0,0,0,0) 0, rgba(0,0,0,0.8) 100%, rgba(0,0,0,0.9) 100%);
+}
+
+.single-page-header-infos h2 {
+    color: #ffffff;
+    margin: 0;
+}
+
+.custom-tabs .custom-tab a {
+	padding: 10px;
+	border-radius: 5px;
+	display: block;
+	position: relative;
+}
+
+.custom-tabs .custom-tab a img {
+	width: 50px;
+	height: 50px;
+}
+
+.border-tab {
+	height: 2px;
+	background: #efefef;
+	position: absolute;
+	bottom: -10px;
+	right: 0;
+	left: 0;
+}
+
+.tab-link-active .border-tab {
+	background: #bcbcbc;
+}
+
+.review-list .item-title {
+	font-weight: 700;
+	color: #111111;
+	font-size: 14px;
+}
+
+.review-list .item-media img {
+	border-radius: 100%;
+}
+
+.review-list .item-after i {
+	font-size: 18px;
+	color: #cf9319;
+}
+
+.md .review-list .item-text {
+	font-size: 13px;
+	max-height: 45px;
+	padding-top: 5px;
+	line-height: 15px;
+}
+
+.comment-form  img {
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+}
+
+.comment-form  textarea {
+	width: 250px;
+	border-radius: 5px;
+	margin-left: 10px;
+	padding: 10px;
+}
+
+.popup-booking .block img {
+	margin: 0px auto 30px auto;
+	width: 70%;
+	display: block;
+}
+
+/*===============================================*/
+/* 04. RECIPE DETAIL					    	 */
+/*===============================================*/
+
+.list-ingredients {
+	list-style: none;
+}
+
+.list-ingredients li {
+	padding-bottom: 10px;
+}
+
+.list-ingredients li:last-child {
+	padding-bottom: 0px;
+}
+
+.list-ingredients li label {
+	padding-right: 15px;
+}
+
+.direction {
+	width: 80px;
+	text-align: center;
+	font-size: 12px;
+}
+
+.direction-img  {
+	padding: 15px;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
+.direction img {
+	width: 30px;
+	height: 30px;
+	margin: 0px auto;
+}
+
+.direction-title {
+	font-weight: 700;
+	color: #111111;
+}
+
+.direction-time {
+	color: #7d7d7d;
+}
+
+/*===============================================*/
+/* 05. FOOD DETAIL 						    	 */
+/*===============================================*/
+
+.order-action {
+	padding-top: 30px;
+}
+
+.food-order-price {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.order-action .stepper {
+	width: 130px;
+}
+
+/*===============================================*/
+/* 06. CHECKOUT	 						    	 */
+/*===============================================*/
+
+.shipping-infos {
+	list-style: none;
+}
+
+.shipping-infos li  {
+	padding-bottom: 8px;
+}
+
+.shipping-infos li:last-child  {
+	padding-bottom: 0px;
+}
+
+.shipping-infos li span {
+	width: 50%;
+	display: inline-block;
+}
+
+.shipping-infos .shipping-infos-footer {
+	font-weight: 700;
+	color: #111111;
+}
+
+/*===============================================*/
+/* 07. PROFILE	 						    	 */
+/*===============================================*/
+
+.profile img {
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+}
+
+.profile .user-name {
+	font-size: 14px;
+}
+
+.list-recipe-img {
+	height: 200px;
+	border-radius: 5px;
+}
+
+.list-recipe-img img {
+	object-fit: cover;
+	object-position: top;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+}
+
+.md .list-recipe-content h4 a {
+	color: #111111;
+}
+
+/*===============================================*/
+/* 08. LOGIN & REGISTER PAGE			    	 */
+/*===============================================*/
+
+.login {
+	background: url(../img/bg.jpg);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.login img {
+	display: block;
+	margin: 60px auto;
+}
+
+.login-card {
+	text-align: center;
+	color: #111111;
+	padding-bottom: 60px;
+	padding-top: 40px;
+}
+
+.login-footer {
+	text-align: center;
+	color: #ffffff;
+	font-size: 13px;
+}
+
+.md .login-footer a {
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+/*===============================================*/
+/* 09. PAGES LIST						    	 */
+/*===============================================*/
+
+.icon {
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.icon img {
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin: 0px auto;
+}
+
+.pages-list .item-title {
+	font-weight: 700;
+	color: #111111;
+	font-size: 14px;
+}
+
+.md .pages-list .item-text {
+	font-size: 13px;
+	max-height: 45px;
+	padding-top: 5px;
+	line-height: 15px;
+}
+
+/*===============================================*/
+/* 10. THEME DARK						    	 */
+/*===============================================*/
+
+.theme-dark h1,
+.theme-dark h2,
+.theme-dark h3,
+.theme-dark h4,
+.theme-dark h5,
+.theme-dark h6,
+.theme-dark h1 a,
+.theme-dark h2 a,
+.theme-dark h3 a,
+.theme-dark h4 a,
+.theme-dark h5 a,
+.theme-dark h6 a,
+.theme-dark .chef-name,
+.theme-dark .user-name,
+.md .theme-dark .food-name a,
+.theme-dark .direction-title,
+.md  .theme-dark .list-recipe-content h4 a,
+.theme-dark .pages-list .item-title,
+.theme-dark .review-list .item-title,
+.theme-dark .form-item-title {
+	color: rgba(255,255,255,.87);
+}
+
+.md .theme-dark input[type="date"]::placeholder,
+.md  .theme-dark input[type="datetime-local"]::placeholder,
+.md .theme-dark input[type="email"]::placeholder,
+.md  .theme-dark input[type="number"]::placeholder,
+.md.theme-dark  input[type="password"]::placeholder,
+.md .theme-dark input[type="search"]::placeholder,
+.md .theme-dark input[type="tel"]::placeholder,
+.md .theme-dark input[type="text"]::placeholder,
+.md .theme-dark input[type="time"]::placeholder,
+.md  .theme-dark input[type="url"]::placeholder,
+.md .theme-dark textarea::placeholder {
+	color: #7d7d7d;
+	
+}
+
+.md .theme-dark input,
+.md .theme-dark textarea {
+	color: #7d7d7d!important
+	
+}
+
+.theme-dark .tab-link-active .border-tab {
+    background: #e91e63;
+}
+
+.theme-dark .custom-card {
+	box-shadow: none;
+}
