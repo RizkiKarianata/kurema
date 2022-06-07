@@ -112,19 +112,19 @@
 				var key = this.$route.params.key;
 				var items = [];
 				var dataJSON = new Array();
-				app.request.get('https://masak-apa-tomorisakura.vercel.app/api/categorys/article/inspirasi-dapur', (response) => {
+				app.request.get('https://masak-apa-tomorisakura.vercel.app/api/category/article/inspirasi-dapur', (response) => {
 					dataJSON = JSON.parse(response);
 					self.$setState({
 						data1: dataJSON.results
 					});
 				});
-				app.request.get('https://masak-apa-tomorisakura.vercel.app/api/categorys/article/makanan-gaya-hidup', (response) => {
+				app.request.get('https://masak-apa-tomorisakura.vercel.app/api/category/article/makanan-gaya-hidup', (response) => {
 					dataJSON = JSON.parse(response);
 					self.$setState({
 						data2: dataJSON.results
 					});
 				});
-				app.request.get('https://masak-apa-tomorisakura.vercel.app/api/categorys/article/tips-masak', (response) => {
+				app.request.get('https://masak-apa-tomorisakura.vercel.app/api/category/article/tips-masak', (response) => {
 					dataJSON = JSON.parse(response);
 					self.$setState({
 						data3: dataJSON.results

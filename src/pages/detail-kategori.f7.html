@@ -59,7 +59,7 @@
 				var id = this.$route.params.id;
 				var items = [];
 				var dataJSON = new Array();
-				app.request.get('https://masak-apa-tomorisakura.vercel.app/api/categorys/recipes/'+id, (response) => {
+				app.request.get('https://masak-apa-tomorisakura.vercel.app/api/category/recipes/'+id, (response) => {
 					dataJSON = JSON.parse(response);
 					console.log(dataJSON);
 					if(id == "resep-dessert") {
